@@ -52,11 +52,11 @@ jobs:
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react
 
       - name: Publish `@jinshuju/field-icons`
-        run: npm publish --provenance --tag insiders
+        run: npm publish --access public --provenance --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@jinshuju/field-icons-react`
-        run: npm publish ./react --provenance --tag insiders
+        run: npm publish ./react --access public --provenance --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

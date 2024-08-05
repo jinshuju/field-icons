@@ -46,11 +46,11 @@ jobs:
           echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
 
       - name: Publish `@jinshuju/field-icons`
-        run: npm publish --provenance --tag ${{ env.RELEASE_CHANNEL }}
+        run: npm publish --provenance --access public --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@jinshuju/field-icons-react`
-        run: npm publish ./react --provenance --tag ${{ env.RELEASE_CHANNEL }}
+        run: npm publish ./react --access public --provenance --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
