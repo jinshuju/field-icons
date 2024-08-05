@@ -41,9 +41,9 @@ function MyComponent() {
 }
 ```
 
-The 24x24 outline icons can be imported from `@jinshuju/field-icons-react/24/outline`, the 24x24 solid icons can be imported from `@jinshuju/field-icons-react/24/solid`, the 20x20 solid icons can be imported from `@jinshuju/field-icons-react/20/solid`, and 16x16 solid icons can be imported from `@jinshuju/field-icons-react/16/solid`.
+The 24x24 outline icons can be imported from `@jinshuju/field-icons-react/24/outline`. Other folders are left empty for now.
 
-Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
+Icons use an upper camel case naming convention and are always preffixed with the word `FieldIcon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@jinshuju/field-icons-react/24/outline/)
 
@@ -51,6 +51,8 @@ Icons use an upper camel case naming convention and are always suffixed with the
 ## Contributing
 
 Update the svg and run `npm build` to generate a new version. Remember to bump up the version.
+
+Don't introduce other tooling like pnpm or yarn.
 
 ## License
 
