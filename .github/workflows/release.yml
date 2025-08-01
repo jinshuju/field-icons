@@ -54,3 +54,8 @@ jobs:
         run: npm publish ./react --access public --provenance --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish `@jinshuju/field-icons-react-native`
+        run: npm publish ./react-native --access public --provenance --tag ${{ env.RELEASE_CHANNEL }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
