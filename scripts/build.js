@@ -64,6 +64,37 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  'react-native': async (svg, componentName, format, isDeprecated) => {
+    const component = await svgr(
+      svg,
+      {
+        native: true,
+        icon: true,
+        ref: false,
+        titleProp: true
+      },
+      { componentName }
+    )
+  
+    let code = component
+  
+    // 添加 @deprecated 注释
+    if (isDeprecated) {
+      const lines = code.split('\n')
+      lines.splice(1, 0, `/** @deprecated */`)
+      code = lines.join('\n')
+    }
+  
+    if (format === 'esm') {
+      return code
+    }
+  
+    // 转换为 CommonJS 格式
+    return code
+      .replace('import * as React from "react"', 'const React = require("react")')
+      .replace('import * as Svg from "react-native-svg"', 'const Svg = require("react-native-svg")')
+      .replace('export default', 'module.exports =')
+  }
 }
 
 async function getIcons(style) {
@@ -122,13 +153,25 @@ async function buildIcons(package, style, format) {
         }
         types.push(`declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;`)
         types.push(`export default ${componentName};`)
-      } else {
+      } 
+      
+      if (package === 'vue') {
         types.push(`import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';`)
         if (isDeprecated) {
           types.push(`/** @deprecated */`)
         }
         types.push(`declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;`)
         types.push(`export default ${componentName};`)
+      }
+
+      if (package === 'react-native') {
+        types.push(`import * as React from 'react';`);
+        types.push(`import type { SvgProps } from 'react-native-svg';`);
+        if (isDeprecated) {
+          types.push(`/** @deprecated */`);
+        }
+        types.push(`declare const ${componentName}: React.FC<SvgProps & { title?: string, titleId?: string }>;`);
+        types.push(`export default ${componentName};`);
       }
 
       return [
