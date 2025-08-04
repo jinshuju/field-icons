@@ -41,6 +41,25 @@ function MyComponent() {
 }
 ```
 
+
+## ReactNative
+
+First, install `@jinshuju/field-icons-react-native` from npm:
+
+```sh
+npm install @jinshuju/field-icons-react-native
+```
+
+Now each icon can be imported individually as a React component:
+
+```js
+import { FieldIconTextField } from '@jinshuju/field-icons-react-native/24/solid'
+
+function MyComponent() {
+  return <FieldIconTextField size={24} color="blue" />
+}
+```
+
 The 24x24 outline icons can be imported from `@jinshuju/field-icons-react/24/outline`. Other folders are left empty for now.
 
 Icons use an upper camel case naming convention and are always preffixed with the word `FieldIcon`.

@@ -51,6 +51,9 @@ jobs:
       - name: 'Version `@jinshuju/field-icons-react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react
 
+      - name: 'Version `@jinshuju/field-icons-react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
+        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react-native
+
       - name: Publish `@jinshuju/field-icons`
         run: npm publish --access public --provenance --tag insiders
         env:
