@@ -69,7 +69,7 @@ Icons use an upper camel case naming convention and are always preffixed with th
 
 ## Contributing
 
-如果要更新图标，修改 src/24/outline 中对应的 svg 即可。文件名以小写字母开头，运行 `npm build` 会替换为 FieldIconCamelCase。 例如 matrix-select.svg -> FieldIconMatrixSelect. 提交后github actions 会自动运行并生成对应的insider-0.0.0.xxx。 测试没问题后，打上 tag (v4.0.x) 会 GitHub Actions 自动 pre-release.
+如果要更新图标，修改 src/24/outline 中对应的 svg 即可。文件名以小写字母开头，运行 `npm run build` 会替换为 FieldIconCamelCase。 例如 matrix-select.svg -> FieldIconMatrixSelect. 提交后github actions 会自动运行并生成对应的insider-0.0.0.xxx。 测试没问题后，打上 tag (v4.0.x) 会 GitHub Actions 自动 pre-release.
 
 Don't introduce other tooling like pnpm or yarn.
 
