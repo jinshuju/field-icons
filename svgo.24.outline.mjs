@@ -1,15 +1,17 @@
 export default {
   plugins: [
-    // 'preset-default',
     'removeDimensions',
     // 'sortAttrs',
     // 'cleanupListOfValues',
-    // {
-    //   name: 'removeAttrs',
-    //   params: {
-    //     attrs: ['stroke', 'path:stroke-width'],
-    //   },
-    // },
+    {
+      name: 'preset-default',
+      params: {
+        overrides: {
+          convertShapeToPath: false,
+          mergePaths: false,
+        },
+      },
+    },
     {
       name: 'removeAttrs',
       params: {
