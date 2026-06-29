@@ -17,20 +17,24 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [22]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
+      # Trusted Publishing (OIDC) needs npm >= 11.5.1
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
       - name: Use cached node_modules
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: nodeModules-${{ hashFiles('**/package-lock.json') }}-${{ matrix.node-version }}
@@ -47,15 +51,9 @@ jobs:
 
       - name: Publish `@jinshuju/field-icons`
         run: npm publish --provenance --access public --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@jinshuju/field-icons-react`
         run: npm publish ./react --access public --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@jinshuju/field-icons-react-native`
         run: npm publish ./react-native --access public --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
