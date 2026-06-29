@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Remove the redundant full-viewBox clipPath from 24/outline icons (smaller output; avoids duplicate `id="a"` references across icons on one page).
 - building
 
 ## [4.0.2] - 2024-08-05
