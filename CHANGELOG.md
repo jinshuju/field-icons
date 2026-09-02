@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2026-09-02
+
 ### Breaking
 
 - Redraw all 24/outline icons as real strokes. They used to ship as stroke-expanded fill paths with a hardcoded `fill="#333333"`; they now ship as `stroke` geometry, so the svg element carries `fill="none" stroke="currentColor"` instead of `fill="currentColor"`.
