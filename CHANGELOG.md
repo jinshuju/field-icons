@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.2.0] - 2026-10-20
+
+### Added
+
+- `serial-number` — for the serial number field (编号).
+
 ## [5.1.0] - 2026-09-24
 
 ### Added
